@@ -104,7 +104,7 @@
 
 * **Faça um fork do projeto:**
 
-    * https://github.com/kutzr/processo-seletivo-dev-senior-jul-2018
+    * https://github.com/kutzr/processo-seletivo-dev-senior-sigma-jul-2018
 
 * **Ao finalizar a sua aplicação, crie um pull request no projeto de origem.**
 
