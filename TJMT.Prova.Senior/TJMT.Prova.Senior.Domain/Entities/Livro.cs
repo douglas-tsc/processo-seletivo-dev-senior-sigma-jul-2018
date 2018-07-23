@@ -25,5 +25,15 @@ namespace TJMT.Prova.Senior.Domain.Entities
         public  Byte[] Capa { get; set; }
 
 
+        public bool IsQtdePaginaValida
+        {
+            get
+            {
+                return Paginas > 0 ;
+            }
+        }
+       
+
+
     }
 }
