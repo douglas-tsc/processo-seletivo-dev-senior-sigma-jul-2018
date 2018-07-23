@@ -4,7 +4,6 @@ namespace TJMT.Prova.Senior.Domain.Interfaces.Repositories
 {
     public interface ILivroRepository : IRepositoryBase<Livro>
     {
-        
 
     }
 }

@@ -1,20 +1,26 @@
 ﻿using AutoMapper;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using TJMT.Prova.Senior.Application.Interface;
 using TJMT.Prova.Senior.Domain.Entities;
-using TJMT.Prova.Senior.Infra.Data.Repositories;
 using TJMT.Prova.Senior.MVC.ViewModels;
 
 namespace TJMT.Prova.Senior.MVC.Controllers
 {
     public class LivrosController : Controller
     {
-        private readonly LivroRepository _livroRepository = new LivroRepository();
+        private readonly ILivroAppService _livroAppService;
+
+        public LivrosController(ILivroAppService livroAppService)
+        {
+            _livroAppService = livroAppService;
+
+        }
 
         // GET: Livros
         public ActionResult Index()
         {
-            var retorno = _livroRepository.GetAll();
+            var retorno = _livroAppService.GetAll();
             var livros = Mapper.Map<IEnumerable<Livro>, IEnumerable<LivroVM>>(retorno);
             return View(livros);
         }
@@ -22,7 +28,9 @@ namespace TJMT.Prova.Senior.MVC.Controllers
         // GET: Livros/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var retorno = _livroAppService.GetById(id);
+            var livros = Mapper.Map<Livro,LivroVM>(retorno);
+            return View(livros);
         }
 
         // GET: Livros/Create
@@ -39,7 +47,7 @@ namespace TJMT.Prova.Senior.MVC.Controllers
             if (ModelState.IsValid)
             {
                 var clientesDomain = Mapper.Map<LivroVM, Livro>(livro);
-                _livroRepository.Add(clientesDomain);
+                _livroAppService.Add(clientesDomain);
 
                 return RedirectToAction("Index");
                  
@@ -51,45 +59,44 @@ namespace TJMT.Prova.Senior.MVC.Controllers
         // GET: Livros/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var retorno = _livroAppService.GetById(id);
+            var livros = Mapper.Map<Livro, LivroVM>(retorno);
+            return View(livros);
         }
 
         // POST: Livros/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(LivroVM livro)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                var retorno = Mapper.Map<LivroVM, Livro>(livro);
+                _livroAppService.Update(retorno);
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+
+            return View(livro);
         }
 
         // GET: Livros/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var retorno = _livroAppService.GetById(id);
+            var livros = Mapper.Map<Livro, LivroVM>(retorno);
+            return View(livros);
         }
 
         // POST: Livros/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost,ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            var retorno = _livroAppService.GetById(id);
+            _livroAppService.Remove(retorno);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
     }
 }

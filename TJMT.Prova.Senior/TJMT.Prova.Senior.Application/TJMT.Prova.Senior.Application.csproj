@@ -40,7 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppServiceBase.cs" />
+    <Compile Include="GeneroAppService.cs" />
+    <Compile Include="Interface\IAppServiceBase.cs" />
+    <Compile Include="Interface\IGeneroAppService.cs" />
+    <Compile Include="Interface\ILivroAppService.cs" />
+    <Compile Include="LivroAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TJMT.Prova.Senior.Domain\TJMT.Prova.Senior.Domain.csproj">
+      <Project>{823B5BFC-5DDC-4DD4-81B2-2A7E323675D3}</Project>
+      <Name>TJMT.Prova.Senior.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

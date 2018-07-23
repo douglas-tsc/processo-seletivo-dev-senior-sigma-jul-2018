@@ -24,5 +24,6 @@ namespace TJMT.Prova.Senior.Domain.Entities
 
         public  Byte[] Capa { get; set; }
 
+
     }
 }
