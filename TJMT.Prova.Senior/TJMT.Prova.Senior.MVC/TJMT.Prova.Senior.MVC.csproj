@@ -178,6 +178,10 @@
     <Compile Include="ViewModels\LivroVM.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ProvaSenior.mdf" />
+    <Content Include="App_Data\ProvaSenior_log.ldf">
+      <DependentUpon>ProvaSenior.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -220,9 +224,7 @@
     <Content Include="Views\Livros\Details.cshtml" />
     <Content Include="Views\Livros\Edit.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
