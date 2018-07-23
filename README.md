@@ -31,5 +31,14 @@
     * Capa (imagem) - obrigatório
 
     * Links de compra (Submarino, Saraiva, etc) - opcional
-
-
+## **Pattern**
+    * DDD
+    * TDD
+    * DI
+    
+## **Framework**
+   * MVC 5
+   * EntityFrameWork 6.2.0
+   * AutoMapper 7.0.1
+   * NinjectNinject.MVC5
+   
